@@ -29,3 +29,5 @@ replay_pid*
 /gradle
 gradlew
 gradlew.bat
+.out
+/out
