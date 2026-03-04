@@ -6,9 +6,9 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class PracticeFormTests extends TestBase {
+public class PracticeFormPositiveTests extends TestBase {
     @Test
-    void successFillFormTest() {
+    void successFillAllFieldsTest() {
         open("/automation-practice-form");
         $("[id=firstName]").setValue("Petr");
         $("[id=lastName]").setValue("Ivanov");
@@ -40,5 +40,20 @@ public class PracticeFormTests extends TestBase {
         $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("testPicture.png"));
         $(".table-responsive").$(byText("Address")).parent().shouldHave(text("Testovskaya street, 18"));
         $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("NCR Delhi"));
+    }
+
+    @Test
+    void successFillObligatoryFieldsTest() {
+        open("/automation-practice-form");
+        $("[id=firstName]").setValue("Petr");
+        $("[id=lastName]").setValue("Ivanov");
+        $("[id=gender-radio-2]").click();
+        $("[id=userNumber]").setValue("9058795412");
+        $("[id=submit]").click();
+
+        $("[id=example-modal-sizes-title-lg]").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Petr Ivanov"));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Female"));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("9058795412"));
     }
 }
