@@ -11,7 +11,7 @@ public class PracticeFormNegativeTests extends TestBase {
     void withoutFirstNameFieldTest() {
         open("/automation-practice-form");
         $("[id=lastName]").setValue("Ivanov");
-        $("[id=gender-radio-2]").click();
+        $("[id=genterWrapper]").$(byText("Female")).click();
         $("[id=userNumber]").setValue("9058795412");
         $("[id=submit]").click();
 
@@ -22,7 +22,7 @@ public class PracticeFormNegativeTests extends TestBase {
     void withoutLastNameFieldTest() {
         open("/automation-practice-form");
         $("[id=firstName]").setValue("Petr");
-        $("[id=gender-radio-2]").click();
+        $("[id=genterWrapper]").$(byText("Female")).click();
         $("[id=userNumber]").setValue("9058795412");
         $("[id=submit]").click();
 
@@ -34,7 +34,7 @@ public class PracticeFormNegativeTests extends TestBase {
         open("/automation-practice-form");
         $("[id=firstName]").setValue("Petr");
         $("[id=lastName]").setValue("Ivanov");
-        $("[id=gender-radio-2]").click();
+        $("[id=genterWrapper]").$(byText("Female")).click();
         $("[id=submit]").click();
 
         $("[id=userNumber]").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
@@ -48,8 +48,8 @@ public class PracticeFormNegativeTests extends TestBase {
         $("[id=userNumber]").setValue("9058795412");
         $("[id=submit]").click();
 
-        $("[id=gender-radio-1]").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
-        $("[id=gender-radio-2]").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
-        $("[id=gender-radio-3]").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        $("[id=genterWrapper]").$(byText("Male")).shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        $("[id=genterWrapper]").$(byText("Female")).shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        $("[id=genterWrapper]").$(byText("Other")).shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
     }
 }

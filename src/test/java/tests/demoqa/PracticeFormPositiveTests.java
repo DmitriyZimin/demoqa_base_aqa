@@ -13,7 +13,7 @@ public class PracticeFormPositiveTests extends TestBase {
         $("[id=firstName]").setValue("Petr");
         $("[id=lastName]").setValue("Ivanov");
         $("[id=userEmail]").setValue("test@test.com");
-        $("[id=gender-radio-1]").click();
+        $("[id=genterWrapper]").$(byText("Male")).click();
         $("[id=userNumber]").setValue("9058795412");
         $("[id=dateOfBirthInput]").click();
         $(".react-datepicker__year-select").$(byText("1974")).click();
@@ -21,7 +21,7 @@ public class PracticeFormPositiveTests extends TestBase {
         $(".react-datepicker__month").$(byText("20")).click();
         $("[id=uploadPicture]").uploadFromClasspath("testPicture.png");
         $("[id=subjectsInput]").setValue("Maths").pressEnter();
-        $("[id=hobbies-checkbox-2]").click();
+        $("[id=hobbiesWrapper]").$(byText("Reading")).click();
         $("[id=currentAddress]").setValue("Testovskaya street, 18");
         $("[id=state]").click();
         $("[id=state]").$(byText("NCR")).click();
@@ -47,7 +47,7 @@ public class PracticeFormPositiveTests extends TestBase {
         open("/automation-practice-form");
         $("[id=firstName]").setValue("Petr");
         $("[id=lastName]").setValue("Ivanov");
-        $("[id=gender-radio-2]").click();
+        $("[id=genterWrapper]").$(byText("Female")).click();
         $("[id=userNumber]").setValue("9058795412");
         $("[id=submit]").click();
 
