@@ -5,55 +5,56 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static tests.demoqa.testdata.TestData.*;
 
 public class PracticeFormPositiveTests extends TestBase {
     @Test
     void successFillAllFieldsTest() {
-        open("/automation-practice-form");
-        $("[id=firstName]").setValue("Petr");
-        $("[id=lastName]").setValue("Ivanov");
-        $("[id=userEmail]").setValue("test@test.com");
-        $("[id=genterWrapper]").$(byText("Male")).click();
-        $("[id=userNumber]").setValue("9058795412");
+        open(urlPracticeForm);
+        $("[id=firstName]").setValue(studentFirstName);
+        $("[id=lastName]").setValue(studentLastName);
+        $("[id=userEmail]").setValue(studentEmail);
+        $("[id=genterWrapper]").$(byText(studentMaleGender)).click();
+        $("[id=userNumber]").setValue(studentNumber);
         $("[id=dateOfBirthInput]").click();
-        $(".react-datepicker__year-select").$(byText("1974")).click();
-        $(".react-datepicker__month-select").$(byText("January")).click();
-        $(".react-datepicker__month").$(byText("20")).click();
-        $("[id=uploadPicture]").uploadFromClasspath("testPicture.png");
-        $("[id=subjectsInput]").setValue("Maths").pressEnter();
-        $("[id=hobbiesWrapper]").$(byText("Reading")).click();
-        $("[id=currentAddress]").setValue("Testovskaya street, 18");
+        $(".react-datepicker__year-select").$(byText(studentBirthYear)).click();
+        $(".react-datepicker__month-select").$(byText(studentBirthMonth)).click();
+        $(".react-datepicker__month").$(byText(studentBirthDay)).click();
+        $("[id=uploadPicture]").uploadFromClasspath(studentPictureFile);
+        $("[id=subjectsInput]").setValue(studentSubject).pressEnter();
+        $("[id=hobbiesWrapper]").$(byText(studentHobby)).click();
+        $("[id=currentAddress]").setValue(studentAddress);
         $("[id=state]").click();
-        $("[id=state]").$(byText("NCR")).click();
+        $("[id=state]").$(byText(studentState)).click();
         $("[id=city]").click();
-        $("[id=city]").$(byText("Delhi")).click();
+        $("[id=city]").$(byText(studentCity)).click();
         $("[id=submit]").click();
 
-        $("[id=example-modal-sizes-title-lg]").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Petr Ivanov"));
-        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("test@test.com"));
-        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Male"));
-        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("9058795412"));
-        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("20 January,1974"));
-        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("Maths"));
-        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Reading"));
-        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("testPicture.png"));
-        $(".table-responsive").$(byText("Address")).parent().shouldHave(text("Testovskaya street, 18"));
-        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("NCR Delhi"));
+        $("[id=example-modal-sizes-title-lg]").shouldHave(text(successHeader));
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text(studentFirstName + " " + studentLastName));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text(studentEmail));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(studentMaleGender));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(studentNumber));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text(studentBirthDay + " " + studentBirthMonth + "," + studentBirthYear));
+        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text(studentSubject));
+        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text(studentHobby));
+        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text(studentPictureFile));
+        $(".table-responsive").$(byText("Address")).parent().shouldHave(text(studentAddress));
+        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text(studentState + " " + studentCity));
     }
 
     @Test
     void successFillObligatoryFieldsTest() {
-        open("/automation-practice-form");
-        $("[id=firstName]").setValue("Petr");
-        $("[id=lastName]").setValue("Ivanov");
-        $("[id=genterWrapper]").$(byText("Female")).click();
-        $("[id=userNumber]").setValue("9058795412");
+        open(urlPracticeForm);
+        $("[id=firstName]").setValue(studentFirstName);
+        $("[id=lastName]").setValue(studentLastName);
+        $("[id=genterWrapper]").$(byText(studentFemaleGender)).click();
+        $("[id=userNumber]").setValue(studentNumber);
         $("[id=submit]").click();
 
-        $("[id=example-modal-sizes-title-lg]").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Petr Ivanov"));
-        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Female"));
-        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("9058795412"));
+        $("[id=example-modal-sizes-title-lg]").shouldHave(text(successHeader));
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text(studentFirstName + " " + studentLastName));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(studentFemaleGender));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(studentNumber));
     }
 }

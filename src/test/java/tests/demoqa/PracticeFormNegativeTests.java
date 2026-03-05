@@ -5,51 +5,52 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static tests.demoqa.testdata.TestData.*;
 
 public class PracticeFormNegativeTests extends TestBase {
     @Test
     void withoutFirstNameFieldTest() {
-        open("/automation-practice-form");
-        $("[id=lastName]").setValue("Ivanov");
-        $("[id=genterWrapper]").$(byText("Female")).click();
-        $("[id=userNumber]").setValue("9058795412");
+        open(urlPracticeForm);
+        $("[id=lastName]").setValue(studentLastName);
+        $("[id=genterWrapper]").$(byText(studentFemaleGender)).click();
+        $("[id=userNumber]").setValue(studentNumber);
         $("[id=submit]").click();
 
-        $("[id=firstName]").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        $("[id=firstName]").shouldHave(cssValue("border-color", invalidColour));
     }
 
     @Test
     void withoutLastNameFieldTest() {
-        open("/automation-practice-form");
-        $("[id=firstName]").setValue("Petr");
-        $("[id=genterWrapper]").$(byText("Female")).click();
-        $("[id=userNumber]").setValue("9058795412");
+        open(urlPracticeForm);
+        $("[id=firstName]").setValue(studentFirstName);
+        $("[id=genterWrapper]").$(byText(studentFemaleGender)).click();
+        $("[id=userNumber]").setValue(studentNumber);
         $("[id=submit]").click();
 
-        $("[id=lastName]").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        $("[id=lastName]").shouldHave(cssValue("border-color", invalidColour));
     }
 
     @Test
     void withoutPhoneFieldTest() {
-        open("/automation-practice-form");
-        $("[id=firstName]").setValue("Petr");
-        $("[id=lastName]").setValue("Ivanov");
-        $("[id=genterWrapper]").$(byText("Female")).click();
+        open(urlPracticeForm);
+        $("[id=firstName]").setValue(studentFirstName);
+        $("[id=lastName]").setValue(studentLastName);
+        $("[id=genterWrapper]").$(byText(studentFemaleGender)).click();
         $("[id=submit]").click();
 
-        $("[id=userNumber]").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        $("[id=userNumber]").shouldHave(cssValue("border-color", invalidColour));
     }
 
     @Test
     void withoutGenderFieldTest() {
-        open("/automation-practice-form");
-        $("[id=firstName]").setValue("Petr");
-        $("[id=lastName]").setValue("Ivanov");
-        $("[id=userNumber]").setValue("9058795412");
+        open(urlPracticeForm);
+        $("[id=firstName]").setValue(studentFirstName);
+        $("[id=lastName]").setValue(studentLastName);
+        $("[id=userNumber]").setValue(studentNumber);
         $("[id=submit]").click();
 
-        $("[id=genterWrapper]").$(byText("Male")).shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
-        $("[id=genterWrapper]").$(byText("Female")).shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
-        $("[id=genterWrapper]").$(byText("Other")).shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        $("[id=genterWrapper]").$(byText(studentMaleGender)).shouldHave(cssValue("border-color", invalidColour));
+        $("[id=genterWrapper]").$(byText(studentFemaleGender)).shouldHave(cssValue("border-color", invalidColour));
+        $("[id=genterWrapper]").$(byText(studentOtherGender)).shouldHave(cssValue("border-color", invalidColour));
     }
 }
