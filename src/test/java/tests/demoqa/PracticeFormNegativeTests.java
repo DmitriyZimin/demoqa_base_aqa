@@ -11,6 +11,10 @@ public class PracticeFormNegativeTests extends TestBase {
     @Test
     void withoutFirstNameFieldTest() {
         open(urlPracticeForm);
+        executeJavaScript("""
+                document.getElementById('fixedban')?.remove();
+                document.querySelector('footer')?.remove();
+                """);
         $("[id=lastName]").setValue(studentLastName);
         $("[id=genterWrapper]").$(byText(studentFemaleGender)).click();
         $("[id=userNumber]").setValue(studentNumber);
@@ -22,6 +26,10 @@ public class PracticeFormNegativeTests extends TestBase {
     @Test
     void withoutLastNameFieldTest() {
         open(urlPracticeForm);
+        executeJavaScript("""
+                document.getElementById('fixedban')?.remove();
+                document.querySelector('footer')?.remove();
+                """);
         $("[id=firstName]").setValue(studentFirstName);
         $("[id=genterWrapper]").$(byText(studentFemaleGender)).click();
         $("[id=userNumber]").setValue(studentNumber);
@@ -33,6 +41,10 @@ public class PracticeFormNegativeTests extends TestBase {
     @Test
     void withoutPhoneFieldTest() {
         open(urlPracticeForm);
+        executeJavaScript("""
+                document.getElementById('fixedban')?.remove();
+                document.querySelector('footer')?.remove();
+                """);
         $("[id=firstName]").setValue(studentFirstName);
         $("[id=lastName]").setValue(studentLastName);
         $("[id=genterWrapper]").$(byText(studentFemaleGender)).click();
@@ -44,6 +56,10 @@ public class PracticeFormNegativeTests extends TestBase {
     @Test
     void withoutGenderFieldTest() {
         open(urlPracticeForm);
+        executeJavaScript("""
+                document.getElementById('fixedban')?.remove();
+                document.querySelector('footer')?.remove();
+                """);
         $("[id=firstName]").setValue(studentFirstName);
         $("[id=lastName]").setValue(studentLastName);
         $("[id=userNumber]").setValue(studentNumber);

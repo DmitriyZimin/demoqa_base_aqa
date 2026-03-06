@@ -11,6 +11,10 @@ public class PracticeFormPositiveTests extends TestBase {
     @Test
     void successFillAllFieldsTest() {
         open(urlPracticeForm);
+        executeJavaScript("""
+                document.getElementById('fixedban')?.remove();
+                document.querySelector('footer')?.remove();
+                """);
         $("[id=firstName]").setValue(studentFirstName);
         $("[id=lastName]").setValue(studentLastName);
         $("[id=userEmail]").setValue(studentEmail);
@@ -46,6 +50,10 @@ public class PracticeFormPositiveTests extends TestBase {
     @Test
     void successFillObligatoryFieldsTest() {
         open(urlPracticeForm);
+        executeJavaScript("""
+                document.getElementById('fixedban')?.remove();
+                document.querySelector('footer')?.remove();
+                """);
         $("[id=firstName]").setValue(studentFirstName);
         $("[id=lastName]").setValue(studentLastName);
         $("[id=genterWrapper]").$(byText(studentFemaleGender)).click();
