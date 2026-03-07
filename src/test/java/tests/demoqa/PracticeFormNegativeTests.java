@@ -15,12 +15,12 @@ public class PracticeFormNegativeTests extends TestBase {
                 document.getElementById('fixedban')?.remove();
                 document.querySelector('footer')?.remove();
                 """);
-        $("[id=lastName]").setValue(studentLastName);
-        $("[id=genterWrapper]").$(byText(studentFemaleGender)).click();
-        $("[id=userNumber]").setValue(studentNumber);
-        $("[id=submit]").click();
+        $("#lastName").setValue(studentLastName);
+        $("#genterWrapper").$(byText(studentFemaleGender)).click();
+        $("#userNumber").setValue(studentNumber);
+        $("#submit").click();
 
-        $("[id=firstName]").shouldHave(cssValue("border-color", invalidColour));
+        $("#firstName").shouldHave(cssValue("border-color", invalidColour));
     }
 
     @Test
@@ -30,12 +30,12 @@ public class PracticeFormNegativeTests extends TestBase {
                 document.getElementById('fixedban')?.remove();
                 document.querySelector('footer')?.remove();
                 """);
-        $("[id=firstName]").setValue(studentFirstName);
-        $("[id=genterWrapper]").$(byText(studentFemaleGender)).click();
-        $("[id=userNumber]").setValue(studentNumber);
-        $("[id=submit]").click();
+        $("#firstName").setValue(studentFirstName);
+        $("#genterWrapper").$(byText(studentFemaleGender)).click();
+        $("#userNumber").setValue(studentNumber);
+        $("#submit").click();
 
-        $("[id=lastName]").shouldHave(cssValue("border-color", invalidColour));
+        $("#lastName").shouldHave(cssValue("border-color", invalidColour));
     }
 
     @Test
@@ -45,12 +45,12 @@ public class PracticeFormNegativeTests extends TestBase {
                 document.getElementById('fixedban')?.remove();
                 document.querySelector('footer')?.remove();
                 """);
-        $("[id=firstName]").setValue(studentFirstName);
-        $("[id=lastName]").setValue(studentLastName);
-        $("[id=genterWrapper]").$(byText(studentFemaleGender)).click();
-        $("[id=submit]").click();
+        $("#firstName").setValue(studentFirstName);
+        $("#lastName").setValue(studentLastName);
+        $("#genterWrapper").$(byText(studentFemaleGender)).click();
+        $("#submit").click();
 
-        $("[id=userNumber]").shouldHave(cssValue("border-color", invalidColour));
+        $("#userNumber").shouldHave(cssValue("border-color", invalidColour));
     }
 
     @Test
@@ -60,13 +60,13 @@ public class PracticeFormNegativeTests extends TestBase {
                 document.getElementById('fixedban')?.remove();
                 document.querySelector('footer')?.remove();
                 """);
-        $("[id=firstName]").setValue(studentFirstName);
-        $("[id=lastName]").setValue(studentLastName);
-        $("[id=userNumber]").setValue(studentNumber);
-        $("[id=submit]").click();
+        $("#firstName").setValue(studentFirstName);
+        $("#lastName").setValue(studentLastName);
+        $("#userNumber").setValue(studentNumber);
+        $("#submit").click();
 
-        $("[id=genterWrapper]").$(byText(studentMaleGender)).shouldHave(cssValue("border-color", invalidColour));
-        $("[id=genterWrapper]").$(byText(studentFemaleGender)).shouldHave(cssValue("border-color", invalidColour));
-        $("[id=genterWrapper]").$(byText(studentOtherGender)).shouldHave(cssValue("border-color", invalidColour));
+        $("#genterWrapper").$(byText(studentMaleGender)).shouldHave(cssValue("border-color", invalidColour));
+        $("#genterWrapper").$(byText(studentFemaleGender)).shouldHave(cssValue("border-color", invalidColour));
+        $("#genterWrapper").$(byText(studentOtherGender)).shouldHave(cssValue("border-color", invalidColour));
     }
 }
