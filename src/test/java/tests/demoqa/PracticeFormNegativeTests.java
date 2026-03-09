@@ -10,11 +10,6 @@ import static tests.demoqa.testdata.TestData.*;
 public class PracticeFormNegativeTests extends TestBase {
     @Test
     void withoutFirstNameFieldTest() {
-        open(urlPracticeForm);
-        executeJavaScript("""
-                document.getElementById('fixedban')?.remove();
-                document.querySelector('footer')?.remove();
-                """);
         $("#lastName").setValue(studentLastName);
         $("#genterWrapper").$(byText(studentFemaleGender)).click();
         $("#userNumber").setValue(studentNumber);
@@ -25,11 +20,6 @@ public class PracticeFormNegativeTests extends TestBase {
 
     @Test
     void withoutLastNameFieldTest() {
-        open(urlPracticeForm);
-        executeJavaScript("""
-                document.getElementById('fixedban')?.remove();
-                document.querySelector('footer')?.remove();
-                """);
         $("#firstName").setValue(studentFirstName);
         $("#genterWrapper").$(byText(studentFemaleGender)).click();
         $("#userNumber").setValue(studentNumber);
@@ -40,11 +30,6 @@ public class PracticeFormNegativeTests extends TestBase {
 
     @Test
     void withoutPhoneFieldTest() {
-        open(urlPracticeForm);
-        executeJavaScript("""
-                document.getElementById('fixedban')?.remove();
-                document.querySelector('footer')?.remove();
-                """);
         $("#firstName").setValue(studentFirstName);
         $("#lastName").setValue(studentLastName);
         $("#genterWrapper").$(byText(studentFemaleGender)).click();
@@ -55,11 +40,6 @@ public class PracticeFormNegativeTests extends TestBase {
 
     @Test
     void withoutGenderFieldTest() {
-        open(urlPracticeForm);
-        executeJavaScript("""
-                document.getElementById('fixedban')?.remove();
-                document.querySelector('footer')?.remove();
-                """);
         $("#firstName").setValue(studentFirstName);
         $("#lastName").setValue(studentLastName);
         $("#userNumber").setValue(studentNumber);

@@ -10,11 +10,6 @@ import static tests.demoqa.testdata.TestData.*;
 public class PracticeFormPositiveTests extends TestBase {
     @Test
     void successFillAllFieldsTest() {
-        open(urlPracticeForm);
-        executeJavaScript("""
-                document.getElementById('fixedban')?.remove();
-                document.querySelector('footer')?.remove();
-                """);
         $("#firstName").setValue(studentFirstName);
         $("#lastName").setValue(studentLastName);
         $("#userEmail").setValue(studentEmail);
@@ -49,11 +44,6 @@ public class PracticeFormPositiveTests extends TestBase {
 
     @Test
     void successFillObligatoryFieldsTest() {
-        open(urlPracticeForm);
-        executeJavaScript("""
-                document.getElementById('fixedban')?.remove();
-                document.querySelector('footer')?.remove();
-                """);
         $("#firstName").setValue(studentFirstName);
         $("#lastName").setValue(studentLastName);
         $("#genterWrapper").$(byText(studentFemaleGender)).click();

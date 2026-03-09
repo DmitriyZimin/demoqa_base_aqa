@@ -1,7 +1,6 @@
 package tests.demoqa.testdata;
 
 public class TestData {
-    public static String urlPracticeForm = "/automation-practice-form";
     public static String successHeader = "Thanks for submitting the form";
     public static String studentFirstName = "Petr";
     public static String studentLastName = "Ivanov";
