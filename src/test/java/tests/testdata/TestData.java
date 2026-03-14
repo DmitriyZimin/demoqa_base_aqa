@@ -1,4 +1,4 @@
-package tests.demoqa.testdata;
+package tests.testdata;
 
 public class TestData {
     public static String successHeader = "Thanks for submitting the form";

@@ -1,11 +1,11 @@
-package tests.demoqa;
+package tests;
 
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static tests.demoqa.testdata.TestData.*;
+import static tests.testdata.TestData.*;
 
 public class PracticeFormNegativeTests extends TestBase {
     @Test
