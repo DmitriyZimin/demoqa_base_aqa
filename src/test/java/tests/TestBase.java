@@ -4,11 +4,13 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import pages.RegistrationPage;
 
 import static com.codeborne.selenide.Selenide.*;
 
 
 public class TestBase {
+    RegistrationPage registrationPage = new RegistrationPage();
     public static String PRACTICE_FORM_PATH = "/automation-practice-form";
 
     @BeforeAll

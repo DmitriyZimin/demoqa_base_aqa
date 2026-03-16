@@ -10,49 +10,43 @@ import static tests.testdata.TestData.*;
 public class PracticeFormPositiveTests extends TestBase {
     @Test
     void successFillAllFieldsTest() {
-        $("#firstName").setValue(studentFirstName);
-        $("#lastName").setValue(studentLastName);
-        $("#userEmail").setValue(studentEmail);
-        $("#genterWrapper").$(byText(studentMaleGender)).click();
-        $("#userNumber").setValue(studentNumber);
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").$(byText(studentBirthYear)).click();
-        $(".react-datepicker__month-select").$(byText(studentBirthMonth)).click();
-        $(".react-datepicker__month").$(byText(studentBirthDay)).click();
-        $("#uploadPicture").uploadFromClasspath(studentPictureFile);
-        $("#subjectsInput").setValue(studentSubject).pressEnter();
-        $("#hobbiesWrapper").$(byText(studentHobby)).click();
-        $("#currentAddress").setValue(studentAddress);
-        $("#state").click();
-        $("#state").$(byText(studentState)).click();
-        $("#city").click();
-        $("#city").$(byText(studentCity)).click();
-        $("#submit").click();
+        registrationPage.typeFirstName(studentFirstName)
+                .typeLastName(studentLastName)
+                .typeEmail(studentEmail)
+                .setGender(studentMaleGender)
+                .typePhone(studentNumber)
+                .setDateOfBirth(studentBirthDay, studentBirthMonth, studentBirthYear)
+                .typeSubject(studentSubject)
+                .setHobby(studentHobby)
+                .uploadPicture(studentPictureFile)
+                .typeAddress(studentAddress)
+                .setStateAndCity(studentState, studentCity)
+                .submitForm();
 
-        $("#example-modal-sizes-title-lg").shouldHave(text(successHeader));
-        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text(studentFirstName + " " + studentLastName));
-        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text(studentEmail));
-        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(studentMaleGender));
-        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(studentNumber));
-        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text(studentBirthDay + " " + studentBirthMonth + "," + studentBirthYear));
-        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text(studentSubject));
-        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text(studentHobby));
-        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text(studentPictureFile));
-        $(".table-responsive").$(byText("Address")).parent().shouldHave(text(studentAddress));
-        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text(studentState + " " + studentCity));
+        registrationPage.checkResultHeader(successHeader)
+                .checkResult("Student Name", studentFirstName + " " + studentLastName)
+                .checkResult("Student Email", studentEmail)
+                .checkResult("Gender", studentMaleGender)
+                .checkResult("Mobile", studentNumber)
+                .checkResult("Date of Birth", studentBirthDay + " " + studentBirthMonth + "," + studentBirthYear)
+                .checkResult("Subjects", studentSubject)
+                .checkResult("Hobbies", studentHobby)
+                .checkResult("Picture", studentPictureFile)
+                .checkResult("Address", studentAddress)
+                .checkResult("State and City", studentState + " " + studentCity);
     }
 
     @Test
     void successFillObligatoryFieldsTest() {
-        $("#firstName").setValue(studentFirstName);
-        $("#lastName").setValue(studentLastName);
-        $("#genterWrapper").$(byText(studentFemaleGender)).click();
-        $("#userNumber").setValue(studentNumber);
-        $("#submit").click();
+        registrationPage.typeFirstName(studentFirstName)
+                .typeLastName(studentLastName)
+                .setGender(studentMaleGender)
+                .typePhone(studentNumber)
+                .submitForm();
 
-        $("#example-modal-sizes-title-lg").shouldHave(text(successHeader));
-        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text(studentFirstName + " " + studentLastName));
-        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(studentFemaleGender));
-        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(studentNumber));
+        registrationPage.checkResultHeader(successHeader)
+                .checkResult("Student Name", studentFirstName + " " + studentLastName)
+                .checkResult("Student Email", studentEmail)
+                .checkResult("Gender", studentMaleGender);
     }
 }

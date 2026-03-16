@@ -2,12 +2,15 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.ResultTableComponent;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class RegistrationPage {
     CalendarComponent calendar = new CalendarComponent();
+    ResultTableComponent resultTable = new ResultTableComponent();
 
     private SelenideElement firstNameInput = $("#firstName");
     private SelenideElement lastNameInput = $("#lastName");
@@ -21,6 +24,8 @@ public class RegistrationPage {
     private SelenideElement stateSelect = $("#state");
     private SelenideElement citySelect = $("#city");
     private SelenideElement stateCityContainer = $("#stateCity-wrapper");
+    private SelenideElement submitForm = $("#submit");
+    private SelenideElement successResultHeader = $("#example-modal-sizes-title-lg");
 
     public RegistrationPage typeFirstName(String value) {
         firstNameInput.setValue(value);
@@ -60,19 +65,19 @@ public class RegistrationPage {
     }
 
     public RegistrationPage typeSubject(String value) {
-        subjectsInput.setValue(value);
+        subjectsInput.setValue(value).pressEnter();
 
         return this;
     }
 
     public RegistrationPage setHobby(String value) {
-        hobbiesContainer.setValue(value);
+        hobbiesContainer.$(byText(value)).click();
 
         return this;
     }
 
     public RegistrationPage uploadPicture(String value) {
-        pictureUpload.setValue(value);
+        pictureUpload.uploadFromClasspath(value);
 
         return this;
     }
@@ -104,9 +109,18 @@ public class RegistrationPage {
         return this;
     }
 
+    public void submitForm() {
+        submitForm.click();
+
+    }
+
+    public RegistrationPage checkResultHeader(String value) {
+        successResultHeader.shouldHave(text(value));
+        return this;
+    }
 
     public RegistrationPage checkResult(String key, String value) {
-
+        resultTable.checkResult(key,value);
         return this;
     }
 }
