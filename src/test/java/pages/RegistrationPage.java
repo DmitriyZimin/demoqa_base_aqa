@@ -2,30 +2,42 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.RemoveBannerComponent;
 import pages.components.ResultTableComponent;
 
+import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
     CalendarComponent calendar = new CalendarComponent();
     ResultTableComponent resultTable = new ResultTableComponent();
+    RemoveBannerComponent adBanner = new RemoveBannerComponent();
 
-    private SelenideElement firstNameInput = $("#firstName");
-    private SelenideElement lastNameInput = $("#lastName");
-    private SelenideElement emailInput = $("#userEmail");
-    private SelenideElement genderContainer = $("#genterWrapper");
-    private SelenideElement phoneInput = $("#userNumber");
-    private SelenideElement subjectsInput = $("#subjectsInput");
-    private SelenideElement hobbiesContainer = $("#hobbiesWrapper");
-    private SelenideElement pictureUpload = $("#uploadPicture");
-    private SelenideElement addressInput = $("#currentAddress");
-    private SelenideElement stateSelect = $("#state");
-    private SelenideElement citySelect = $("#city");
-    private SelenideElement stateCityContainer = $("#stateCity-wrapper");
-    private SelenideElement submitForm = $("#submit");
-    private SelenideElement successResultHeader = $("#example-modal-sizes-title-lg");
+    public static String PRACTICE_FORM_PATH = "/automation-practice-form";
+    private final SelenideElement firstNameInput = $("#firstName");
+    private final SelenideElement lastNameInput = $("#lastName");
+    private final SelenideElement emailInput = $("#userEmail");
+    private final SelenideElement genderContainer = $("#genterWrapper");
+    private final SelenideElement phoneInput = $("#userNumber");
+    private final SelenideElement subjectsInput = $("#subjectsInput");
+    private final SelenideElement hobbiesContainer = $("#hobbiesWrapper");
+    private final SelenideElement pictureUpload = $("#uploadPicture");
+    private final SelenideElement addressInput = $("#currentAddress");
+    private final SelenideElement stateSelect = $("#state");
+    private final SelenideElement citySelect = $("#city");
+    private final SelenideElement stateCityContainer = $("#stateCity-wrapper");
+    private final SelenideElement submitForm = $("#submit");
+    private final SelenideElement successResultHeader = $("#example-modal-sizes-title-lg");
+
+    public RegistrationPage openPracticeForm() {
+        open(PRACTICE_FORM_PATH);
+        adBanner.removeBanner();
+
+        return this;
+    }
 
     public RegistrationPage typeFirstName(String value) {
         firstNameInput.setValue(value);
@@ -116,11 +128,37 @@ public class RegistrationPage {
 
     public RegistrationPage checkResultHeader(String value) {
         successResultHeader.shouldHave(text(value));
+
         return this;
     }
 
     public RegistrationPage checkResult(String key, String value) {
-        resultTable.checkResult(key,value);
+        resultTable.checkPracticeFormResult(key, value);
+
+        return this;
+    }
+
+    public RegistrationPage checkResultWithoutFirstName(String key, String value) {
+        firstNameInput.shouldHave(cssValue(key, value));
+
+        return this;
+    }
+
+    public RegistrationPage checkResultWithoutLastName(String key, String value) {
+        lastNameInput.shouldHave(cssValue(key, value));
+
+        return this;
+    }
+
+    public RegistrationPage checkResultWithoutPhone(String key, String value) {
+        phoneInput.shouldHave(cssValue(key, value));
+
+        return this;
+    }
+
+    public RegistrationPage checkGender(String gender, String key, String value) {
+        genderContainer.$(byText(gender)).shouldHave(cssValue(key, value));
+
         return this;
     }
 }

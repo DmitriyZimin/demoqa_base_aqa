@@ -2,15 +2,13 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 import static tests.testdata.TestData.*;
 
 public class PracticeFormPositiveTests extends TestBase {
     @Test
     void successFillAllFieldsTest() {
-        registrationPage.typeFirstName(studentFirstName)
+        registrationPage.openPracticeForm()
+                .typeFirstName(studentFirstName)
                 .typeLastName(studentLastName)
                 .typeEmail(studentEmail)
                 .setGender(studentMaleGender)
@@ -38,7 +36,8 @@ public class PracticeFormPositiveTests extends TestBase {
 
     @Test
     void successFillObligatoryFieldsTest() {
-        registrationPage.typeFirstName(studentFirstName)
+        registrationPage.openPracticeForm()
+                .typeFirstName(studentFirstName)
                 .typeLastName(studentLastName)
                 .setGender(studentMaleGender)
                 .typePhone(studentNumber)
@@ -46,7 +45,7 @@ public class PracticeFormPositiveTests extends TestBase {
 
         registrationPage.checkResultHeader(successHeader)
                 .checkResult("Student Name", studentFirstName + " " + studentLastName)
-                .checkResult("Student Email", studentEmail)
-                .checkResult("Gender", studentMaleGender);
+                .checkResult("Gender", studentMaleGender)
+                .checkResult("Mobile", studentNumber);
     }
 }

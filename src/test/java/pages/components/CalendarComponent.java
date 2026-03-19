@@ -1,8 +1,6 @@
 package pages.components;
 
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static tests.testdata.TestData.*;
 
 public class CalendarComponent {
     public void setDate(String day, String month, String year) {
