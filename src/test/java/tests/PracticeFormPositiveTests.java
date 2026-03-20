@@ -8,6 +8,7 @@ public class PracticeFormPositiveTests extends TestBase {
     @Test
     void successFillAllFieldsTest() {
         registrationPage.openPracticeForm()
+                .removeBanner()
                 .typeFirstName(studentFirstName)
                 .typeLastName(studentLastName)
                 .typeEmail(studentEmail)
@@ -37,6 +38,7 @@ public class PracticeFormPositiveTests extends TestBase {
     @Test
     void successFillObligatoryFieldsTest() {
         registrationPage.openPracticeForm()
+                .removeBanner()
                 .typeFirstName(studentFirstName)
                 .typeLastName(studentLastName)
                 .setGender(studentMaleGender)

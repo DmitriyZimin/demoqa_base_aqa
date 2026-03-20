@@ -8,6 +8,7 @@ public class TextBoxTests extends TestBase {
     @Test
     void successFillAllFieldsTest() {
         textBoxPage.openTextBox()
+                .removeBanner()
                 .typeFullName(userFirstName + " " + userLastName)
                 .typeEmail(userEmail)
                 .typeCurrentAddress(userCurrentAddress)

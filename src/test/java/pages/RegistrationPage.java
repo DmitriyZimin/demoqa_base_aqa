@@ -34,6 +34,11 @@ public class RegistrationPage {
 
     public RegistrationPage openPracticeForm() {
         open(PRACTICE_FORM_PATH);
+
+        return this;
+    }
+
+    public RegistrationPage removeBanner() {
         adBanner.removeBanner();
 
         return this;

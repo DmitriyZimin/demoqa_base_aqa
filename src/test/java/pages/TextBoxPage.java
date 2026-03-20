@@ -20,6 +20,11 @@ public class TextBoxPage {
 
     public TextBoxPage openTextBox() {
         open(TEXT_BOX_PATH);
+
+        return this;
+    }
+
+    public TextBoxPage removeBanner() {
         adBanner.removeBanner();
 
         return this;

@@ -8,6 +8,7 @@ public class PracticeFormNegativeTests extends TestBase {
     @Test
     void withoutFirstNameFieldTest() {
         registrationPage.openPracticeForm()
+                .removeBanner()
                 .typeLastName(studentLastName)
                 .setGender(studentFemaleGender)
                 .typePhone(studentNumber)
@@ -19,6 +20,7 @@ public class PracticeFormNegativeTests extends TestBase {
     @Test
     void withoutLastNameFieldTest() {
         registrationPage.openPracticeForm()
+                .removeBanner()
                 .typeFirstName(studentFirstName)
                 .setGender(studentFemaleGender)
                 .typePhone(studentNumber)
@@ -30,6 +32,7 @@ public class PracticeFormNegativeTests extends TestBase {
     @Test
     void withoutPhoneFieldTest() {
         registrationPage.openPracticeForm()
+                .removeBanner()
                 .typeFirstName(studentFirstName)
                 .typeLastName(studentLastName)
                 .setGender(studentFemaleGender)
@@ -41,6 +44,7 @@ public class PracticeFormNegativeTests extends TestBase {
     @Test
     void withoutGenderFieldTest() {
         registrationPage.openPracticeForm()
+                .removeBanner()
                 .typeFirstName(studentFirstName)
                 .typeLastName(studentLastName)
                 .typePhone(studentNumber)
