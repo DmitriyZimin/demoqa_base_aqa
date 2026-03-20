@@ -1,4 +1,4 @@
-package tests.demoqa.testdata;
+package tests.testdata;
 
 public class TestData {
     public static String successHeader = "Thanks for submitting the form";
@@ -19,4 +19,9 @@ public class TestData {
     public static String studentState = "NCR";
     public static String studentCity = "Delhi";
     public static String invalidColour = "rgb(220, 53, 69)";
+    public static String userFirstName = "Galina";
+    public static String userLastName = "Ivanova";
+    public static String userEmail = "testers@test.com";
+    public static String userCurrentAddress = "Current street, 18";
+    public static String userPermanentAddress = "Permanent street, 18";
 }
